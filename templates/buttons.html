@@ -1,0 +1,9 @@
+{% macro buttons(tarefas) %}
+
+<form action="/deletar_tarefa" method="POST">
+    <button type="submit" class="waves-effect waves-light btn-small red">
+        <i class="material-icons right">delete</i>Deletar
+    </button>
+    <input type="hidden" name="tarefa" value="{{ tarefa }}">
+
+{% endmacro %}

@@ -1,0 +1,44 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+
+<link rel="stylesheet" href="style.css">
+
+<div class="container">
+    <h1 class="center-align">
+        <strong>Lista de Tarefas</strong>
+    </h1>
+</div>
+
+<h5 class="center-align">Adicione suas Tarefas:</h5>
+
+<!-- Formulário para adicionar tarefas -->
+<form action="/adicionar_tarefa" method="POST">
+    <div class="row">
+        <div class="input-field col s12 m6 offset-m3">
+            <input id="tarefa" type="text" class="validate" name="tarefa" required>
+            <label class="active" for="tarefa">Tarefas:</label>
+        </div>
+        <button type="submit" class="waves-effect waves-light btn-small">Adicionar Tarefa</button>
+    </div>
+    <!-- Botão de submit dentro do form -->
+</form>
+
+<div class="container">
+    <h4>
+        <em>Tarefas:</em>
+    </h4>
+    <!-- Lista de tarefas com o estilo de collection e striped -->
+    <ul class="highlight">
+        {% for tarefa in tarefas %}
+        <li class="highlight-item">{{ tarefa }}</li>
+        {% endfor %}
+    </ul>
+
+</div>
+
+<!-- Link do Materialize JS -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+
+{% endblock %}
