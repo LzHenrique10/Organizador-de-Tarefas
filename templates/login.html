@@ -2,9 +2,38 @@
 
 {% block content %}
 
+<style>
+    body {
+        background: linear-gradient(90deg, #6e14bd,  #4200c7);
+    }
+    .container {
+        margin-top: 50px;
+        align-items: center;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+    }
+    .center-align {
+        text-align: center;
+        color: rgb(255, 255, 255);
+        font-family: Righteous, sans-serif;
+    }
+    .entrar {
+        display: flex;
+        background-color: #3a026b;
+        color: white; 
+        font-size: 15px;
+        font-weight: 400;
+        border-radius: 10px;
+        justify-content: center;
+        margin-top: 20px;;
+    }
+    </style>
+
 <h2 class="center-align">
     <strong>
-        <em>Login</em>
+        Login
     </strong>
 </h2>
 
@@ -12,14 +41,15 @@
     <form action="/home">
         <div class="row">
             <div class="input-field col s12 m6 offset-m3">
-                <input id="username" type="text" class="validate" name="username" required>
-                <label class="active" for="username">Usuário:</label>
+                <input type="text" class="validate" name="username" placeholder="Usuário" required>
+                <i class='bx bxs-user'></i>
             </div>
             <div class="input-field col s12 m6 offset-m3">
-                <input id="password" type="password" class="validate" name="password" required>
-                <label class="active" for="password">Senha:</label>
+                <input id="password" type="password" class="validate" name="password" placeholder="Senha" required>
+                <i class='bx bxs-lock-alt'></i>
             </div>
-            <button type="submit" class="waves-effect waves-light btn-small">Entrar</button>
         </div>
+            <button type="submit" class="entrar">Entrar</button>
     </form>
+</div>    
     {% endblock %}
