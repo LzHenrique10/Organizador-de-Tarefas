@@ -1,27 +1,26 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Lista de Tarefas</title>
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
-
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
 </head>
-<style>
-    .purple.darken-3 {
-        background: linear-gradient(45deg, #6e14bd,  #4200c7);
-        font-family: Righteous, sans-serif;
-    }
-</style>
-<body>
-    <nav class="purple darken-3">
+
+
+
+<body class="{{ body_class }}">
+    <header class="Barra-de-Navegação">
         <div class="nav-wrapper">
             <a href="#" class="brand-logo center">Lista de Tarefas</a>
             {% block navegacao %}{% endblock %}
         </div>
-    </nav>
-    
+    </header>
 
-        {% block content %}{% endblock %}
+
+    {% block content %}{% endblock %}
 </body>
+
 </html>

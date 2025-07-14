@@ -6,12 +6,12 @@ tarefas = []
 
 @app.route('/')
 def login():
-    return render_template('login.html')
+    return render_template('login.html', body_class='login-page')
 
 @app.route('/home')
 def home():
     return render_template('home.html',
-                            tarefas=tarefas)
+                            tarefas=tarefas, body_class='home-page')
 
 
 @app.route('/adicionar_tarefa', methods=['POST'])
@@ -19,7 +19,6 @@ def adicionar_tarefa():
     nova_tarefa = request.form['tarefa']
     tarefas.append(nova_tarefa)  # Adiciona a tarefa na lista
     return redirect('/home')
-
 
 
 if __name__ == '__main__':

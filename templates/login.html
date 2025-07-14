@@ -2,54 +2,25 @@
 
 {% block content %}
 
-<style>
-    body {
-        background: linear-gradient(90deg, #6e14bd,  #4200c7);
-    }
-    .container {
-        margin-top: 50px;
-        align-items: center;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
-    }
-    .center-align {
-        text-align: center;
-        color: rgb(255, 255, 255);
-        font-family: Righteous, sans-serif;
-    }
-    .entrar {
-        display: flex;
-        background-color: #3a026b;
-        color: white; 
-        font-size: 15px;
-        font-weight: 400;
-        border-radius: 10px;
-        justify-content: center;
-        margin-top: 20px;;
-    }
-    </style>
-
-<h2 class="center-align">
-    <strong>
-        Login
-    </strong>
-</h2>
-
-<div class="container">
+<main class="container">
     <form action="/home">
-        <div class="row">
-            <div class="input-field col s12 m6 offset-m3">
-                <input type="text" class="validate" name="username" placeholder="Usuário" required>
-                <i class='bx bxs-user'></i>
-            </div>
-            <div class="input-field col s12 m6 offset-m3">
-                <input id="password" type="password" class="validate" name="password" placeholder="Senha" required>
-                <i class='bx bxs-lock-alt'></i>
-            </div>
+        <h1>Login</h1>
+        <div class="input-box">
+            <input type="text" placeholder="Usuario" required>
+            <i class='bx bxs-user'></i>
         </div>
-            <button type="submit" class="entrar">Entrar</button>
+        <div class="input-box">
+            <input type="password" placeholder="Senha" required>
+            <i class='bx bxs-lock-alt'></i>
+        </div>
+        <div class="remember-forgot">
+            <label class="checkbox">
+                <input type="checkbox">
+                Lembrar-me
+            </label>
+            <a href="#" class="esqueci-senha">Esqueceu a senha?</a>
+        </div>
+        <button type="submit" class="entrar">Login</button>
     </form>
-</div>    
-    {% endblock %}
+</main>
+{% endblock %}
