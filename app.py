@@ -1,6 +1,11 @@
 from flask import Flask, render_template, request, redirect
+from database import db
+from models import Usuario
 
 app = Flask(__name__)
+
+app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///user.db'
+db.init_app(app)
 
 tarefas = []
 
@@ -20,6 +25,29 @@ def adicionar_tarefa():
     tarefas.append(nova_tarefa)  # Adiciona a tarefa na lista
     return redirect('/home')
 
+@app.route('/cadastrar', methods=['GET', 'POST'])
+def cadastrar():
+    if request.method == 'GET':
+        return render_template('cadastrar.html', body_class='cadastrar-page')
+    elif request.method == 'POST':
+        nome = request.form.get('nome')
+        email = request.form.get('email')
+        senha = request.form.get('senha')
+        confirmar_senha = request.form.get('confirmar_senha')
+
+        if senha != confirmar_senha:
+            return "Erro: senhas diferentes!"
+
+        try:
+            novo_usuario = Usuario(nome=nome, email=email, senha=senha)
+            db.session.add(novo_usuario)
+            db.session.commit()
+            # Redireciona para a rota do login (com body_class correto lá)
+            return redirect('/')
+        except Exception as e:
+            return f"Erro ao cadastrar: {e}"
 
 if __name__ == '__main__':
+    with app.app_context():
+        db.create_all()
     app.run(debug=True)

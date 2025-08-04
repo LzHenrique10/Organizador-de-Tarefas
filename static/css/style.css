@@ -251,3 +251,36 @@ input[type="checkbox"] {
   justify-content: center;
   margin: 0px;
 }
+
+
+.cadastrar-page {
+  background: url("/static/img/img-noite.jpg");
+  background-size: cover;
+  background-position: center;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.container-cadastrar {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.cadastrar-form {
+  width: 100%;
+  max-width: 600px;
+  margin: 0;
+  padding: 20px;
+  background-color: rgba(255, 255, 255, 0.1);
+  border-radius: 10px;
+  font-family: "Righteous", sans-serif;
+  color: rgb(0, 0, 0);
+}
+
+
+
+
