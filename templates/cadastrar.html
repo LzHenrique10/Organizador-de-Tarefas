@@ -2,27 +2,26 @@
 
 {% block content %}
 <div class="conteiner-cadastrar">
-  <h1 class="cadastrar-h1">Formulário de Cadastro</h1>
-
   <form action="/cadastrar" method="post">
     <div class="cadastrar-form">
-    <label for="nome">Nome:</label><br>
-    <input type="text" id="nome" name="nome" required><br><br>
+      <h1 class="cadastre-se">Cadastre-se</h1>
+      <p>Já tem uma conta? <a href="{{ url_for('login') }}" class="num-sei-log">Faça login</a></p>
+      <div class="input-cad">
+        <input type="email" name="email" placeholder="E-mail" required>
+        <i class='bx bx-envelope'></i>
+      </div>
 
-    <label for="email">E-mail:</label><br>
-    <input type="email" id="email" name="email" required><br><br>
-
-    <label for="senha">Senha:</label><br>
-    <input type="password" id="senha" name="senha" required><br><br>
-
-    <label for="confirmar_senha">Confirmar Senha:</label><br>
-    <input type="password" id="confirmar_senha" name="confirmar_senha" required><br><br>
-
-    <input type="submit" value="Cadastrar">
+      <div class="input-cad">  
+        <input type="password" name="senha" placeholder="Senha" required>
+        <i class='bx bxs-lock-alt'></i>
+      </div>
+      
+      <div class="input-cad">
+        <input type="password" name="confirmar_senha" placeholder="Confirme a Senha" required>
+        <i class='bx bxs-lock-alt'></i>
+      </div>
+        <button type="submit" class="button-cad">Cadastrar</button>
     </div>
   </form>
 </div>
-</body>
-</html>
-
 {% endblock %}

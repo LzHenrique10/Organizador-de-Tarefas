@@ -1,56 +1,63 @@
-  {% extends 'base.html' %}
-
-{% block content %}
-
+{% extends 'base.html' %} {% block content %}
 
 <div class="container-home">
-    <h1 class="lista-home" id="scramble-text">
-        Bem-Vindo(a)!
-    </h1>   
+  <h1 class="lista-home" id="scramble-text">Bem-Vindo(a)!</h1>
 
-    <h5 class="add-home" id="digitando-texto"></h5>
+  <h5 class="add-home" id="digitando-texto"></h5>
 
-    <!-- Formulário para adicionar tarefas -->
-    <form action="/adicionar_tarefa" method="POST">
-        <div class="row-home">
-            <div class="input-home">
-                <input id="tarefa" type="text" class="validate" name="tarefa" placeholder="Digite sua tarefa" required>
-            </div>
-            <button type="submit" class="button-home">Adicionar Tarefa</button>
-        </div>
-        <!-- Botão de submit dentro do form -->
-    </form>
-    
-    <div class="tarefas-home">
-        <h4 class="tarefas-lista">
-            <em>Tarefas:</em>
-        </h4>
-        <!-- Lista de tarefas com o estilo de collection e striped -->
-        <ul class="highlight">
-            {% for tarefa in tarefas %}
-            <li class="highlight-item">{{ tarefa }}</li>
-            {% endfor %}
-        </ul>
-        
+  <!-- Formulário para adicionar tarefas -->
+  <form action="/adicionar_tarefa" method="POST">
+    <div class="row-home">
+      <div class="input-home">
+        <input
+          id="tarefa"
+          type="text"
+          class="validate"
+          name="tarefa"
+          placeholder="Digite sua tarefa"
+          required
+        />
+      </div>
+      <button type="submit" class="button-home">Adicionar Tarefa</button>
     </div>
+    <!-- Botão de submit dentro do form -->
+  </form>
+
+  <div class="tarefas-home">
+    <h4 class="tarefas-lista">
+      <em>Tarefas:</em>
+    </h4>
+    <ul class="tarefas-loop">
+      {% for tarefa in tarefas %}
+      <li class="tarefas-itens">
+        <span>{{ tarefa }}</span>
+        <form action="/deletar_tarefa/{{ loop.index0 }}" method="POST">
+          <button type="submit" class="delete-btn">
+            <i class="bx bx-trash"></i>
+          </button>
+        </form>
+      </li>
+      {% endfor %}
+    </ul>
+  </div>
 </div>
 
 <script>
-    const texto = "Adicione suas Tarefas:";
-    const elemento = document.getElementById("digitando-texto");
-    let index = 0;
+  const texto = "Adicione suas Tarefas:";
+  const elemento = document.getElementById("digitando-texto");
+  let index = 0;
 
-    function digitarTexto() {
-        if (index < texto.length) {
-            elemento.innerHTML += texto.charAt(index);
-            index++;
-            setTimeout(digitarTexto, 100);
-        }
+  function digitarTexto() {
+    if (index < texto.length) {
+      elemento.innerHTML += texto.charAt(index);
+      index++;
+      setTimeout(digitarTexto, 100);
     }
+  }
 
-    window.onload = digitarTexto;
+  window.onload = digitarTexto;
 
-    // Efeito de texto embaralhado
+  // Efeito de texto embaralhado
   const el = document.getElementById("scramble-text");
   const finalText = "Bem-Vindo(a)!";
   const letters = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz";
@@ -72,10 +79,8 @@
       clearInterval(interval);
     }
 
-    iteration += 1 / 4 ; // velocidade
+    iteration += 1 / 4; // velocidade
   }, 50);
-
-
 </script>
 
 {% endblock %}

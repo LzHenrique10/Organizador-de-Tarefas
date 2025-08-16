@@ -3,14 +3,15 @@
 {% block content %}
 
 <main class="container">
-    <form action="/home">
+    <form action="/home" method="POST" autocomplete="off">
         <h1>Login</h1>
+        <p class="num-sei">Não tem conta?<a class="num-sei-cad" href="{{ url_for('cadastrar') }}">Cadastre-se</a></p>
         <div class="input-box">
-            <input type="text" placeholder="Usuario" required>
-            <i class='bx bxs-user'></i>
+            <input type="text" placeholder="E-mail" required>
+            <i class='bx bx-envelope'></i>
         </div>
         <div class="input-box">
-            <input type="password" placeholder="Senha" required>
+            <input type="password" placeholder="Senha" autocomplete="new-password" required>
             <i class='bx bxs-lock-alt'></i>
         </div>
         <div class="remember-forgot">

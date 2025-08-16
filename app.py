@@ -47,6 +47,14 @@ def cadastrar():
         except Exception as e:
             return f"Erro ao cadastrar: {e}"
 
+
+@app.route('/deletar_tarefa/<int:index>', methods=['POST'])
+def deletar_tarefa(index):
+    if 0 <= index < len(tarefas):  # garante que o índice existe
+        tarefas.pop(index)         # remove a tarefa
+    return redirect('/home')
+
+
 if __name__ == '__main__':
     with app.app_context():
         db.create_all()
